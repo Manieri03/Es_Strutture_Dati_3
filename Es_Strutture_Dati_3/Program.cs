@@ -22,7 +22,7 @@ namespace Es_Strutture_Dati_3
                     string line;
                     while ((line = sr.ReadLine())!= null)
                     {
-                        double n = double.Parse(line);
+                        double n = double.Parse(line );
                     }
                 }
                 
