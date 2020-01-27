@@ -12,26 +12,34 @@ namespace Es_Strutture_Dati_3
         static void Main(string[] args)
         {
             Console.WriteLine("Inserisci il nome del file sorgente");
-            string s = Console.ReadLine();
+            string s = $"{ Console.ReadLine() }";
             Console.WriteLine("Inserisci il nome del file di destinazione");
-            string d = Console.ReadLine();
+            string d = $"{ Console.ReadLine() }";
             if (File.Exists(s))
             {
-                using (StreamReader sr = new StreamReader("file.txt", Encoding.UTF8))
+                try
                 {
-                    string line;
-                    while ((line = sr.ReadLine())!= null)
+                    using (StreamReader sr = new StreamReader(s))
                     {
-                        double n = double.Parse(line );
+                        using (StreamWriter sw = new StreamWriter(d))
+                        {
+                            string line;
+                            while ((line = sr.ReadLine()) != null)
+                            {
+                                sw.WriteLine(line);
+                            }
+                        }
                     }
                 }
-                
+                catch { }
             }
-            if (File.Exists(d))
+            else
             {
-                
+                Console.WriteLine("Manca il file sorgente!");
+                Console.ReadLine();
             }
-                
         }
     }
 }
+    
+
